@@ -80,14 +80,4 @@ class Treners(models.Model):
         verbose_name = "Тренер"
         verbose_name_plural = "Тренеры"
 
-# class Comments(models.Model):
-#     """Коментарии"""
-#     name = models.CharField("Идентефикатор", max_length=1024)
-#
-#
-#     def __str__(self):
-#         return self.name
-#
-#     class Meta:
-#         verbose_name = "Комментарий"
-#         verbose_name_plural = "Комментарии"
+

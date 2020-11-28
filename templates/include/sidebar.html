@@ -1,0 +1,22 @@
+{% load static %}
+            <div class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="most-populer-second">
+                <h1 class="bdr-top-title">ПОЛЕЗНО</h1>
+                    {% for article in articles_list %}
+                    <!-- выводим статьи из БД -->
+                                <div class="populer-item">
+                                    <h2><a href="/blog-details.php/{{ article.slug }}">{{ article.title }}</a></h2>
+                                    <p class="p-t-cat">{{ article.intro_text }}</p>
+                                    <p><b>Автор статьи: </b>{{ article.title }}</p>
+                                </div>
+                    <!-- конец выводим статьи из БД -->
+                    {% endfor %}
+                    <div class="newsletter-section">
+                        <h1 class="bdr-top-title">Шахматы онлайн</h1>
+                        <p>Занятия с профессиональным тренером</p>
+                        <div class="banner-ad">
+                            <a href="personal-training.php"><img src="{% static 'img/banner/banner.jpg' %}" alt="button" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>

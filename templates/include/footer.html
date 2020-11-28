@@ -56,12 +56,12 @@
 				<div class="ft-info">
 					<h2>Карта<span> сайта</span></h2>
 					<ul>
-						<li><a href="/treners.php"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>тренеры</a></li>
-						<li><a href="/personal-training.php"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>занятия</a></li>
-						<li><a href="/files.php"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>файлы</a></li>
-						<li><a href="/blog.php"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>статьи</a></li>
-						<li><a href="/video.php"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>видеоуроки</a></li>
-						<li><a href="/foto.php"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>фотогалерея</a></li>
+                        <li><a href="{% url 'index_url' %}">ГЛАВНАЯ</a></li>
+                        <li><a href="{% url 'treners_url' %}">ТРЕНЕРЫ</a></li>
+                        <li><a href="{% url 'prsonal_trening_url' %}">ОНЛАЙН ЗАНЯТИЯ</a></li>
+                        <li><a href="{% url 'videos_url' %}">ВИДЕОУРОКИ</a></li>
+                        <li><a href="{% url 'files_url' %}">ФАЙЛЫ</a></li>
+                        <li><a href="{% url 'articles_list_url' %}">НОВОСТИ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 						<h1>Yarsanych</h1>
 						<h2><span>жми</span> сейчас</h2>
 						<p>получи скидку на видео уроки</p>
-						<div class="shop-now"><a href="/personal-training.php">ПОЛУЧИТЬ</a>
+						<div class="shop-now"><a href="{% url 'prsonal_trening_url' %}">ПОЛУЧИТЬ</a>
 							<div class="icon"><i class="fa fa-long-arrow-right"></i></div>
 						</div>
 						<img src="{% static 'img/shop.png' %}" alt="shop" />
@@ -95,7 +95,7 @@
 	</div>
 </div>
 <footer>
-	<div class="sticky-fotter" style="padding-top: 25px; padding-bottom: 0px;">
+	<div class="sticky-fotter">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-sm-6  col-xs-12">
@@ -104,7 +104,7 @@
 					</div>
 				</div>
                 <img src="{% static 'img/bg/fotterbg.png' %}" alt="" />
-				<a class="go-top" href="#home"><i class="fa fa-arrow-circle-o-up"></i></a>
+				<a class="go-top" href="#"><i class="fa fa-arrow-circle-o-up"></i></a>
 			</div>
 		</div>
 	</div>
