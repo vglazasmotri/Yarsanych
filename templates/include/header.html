@@ -1,0 +1,135 @@
+{% load static %}
+<!-- preloader -->
+<div id="preloader"></div>
+<!-- header-start -->
+<header>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="header-top-left">
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="header-top-right">
+                        {% if user.is_authenticated %}
+                        <div class="single-htr">
+                            <a class='popup-modal'>Вы авторизованы на сайте </a>
+                            <i class="fa fa-key"></i>
+                            <a href="{% url 'account_logout' %}" class='popup-modal'>Выход</a>
+                        </div>
+                        {% else %}
+                        <div class="single-htr">
+                            <i class="fa fa-key"></i>
+                            <a href="{% url 'account_login' %}" class='popup-modal'>Войти</a>
+                        </div>
+                        <div class="single-htr">
+                            <i class="fa fa-user-times"></i>
+                            <a href="{% url 'account_signup' %}" class='popup-modal'><span>Регистрация</span></a>
+                        </div>
+                        {% endif %}
+<!-- Модальное окно для неавторизованного пользователя-->
+<div id="test-modal" class="white-popup mfp-hide">
+   <p style="text-align: right;"><a class="popup-modal-dismiss" href="#">Закрыть</a></p>
+                                <div class="rf-head">
+                                    <p>Чтобы получить доступ к Видео войдите на сайт или зарегистрируйтесь</p>
+                                </div>
+                                <div class="rf-body clearfix">
+                                    <div class="rf-body-or-area">
+                                    </div>
+                                    <div class="rf-body-left">
+                                        <form action="" method="post">
+                                            <div class="rf-inputs-area">
+                                                <div class="rf-input-email rf-inputs">
+                                                    <input class="rf-email" type="email" placeholder="Email" name="email" id="reg_email" value="">
+                                                </div>
+                                                <div class="rf-input-password rf-inputs">
+                                                    <input class="rf-password type_password" type="Password" placeholder="пароль" name="password" id="reg_pass" value="">
+                                                </div>
+                                                <div class="rf-input-password rf-inputs">
+                                                    <input class="rf-password type_password" type="Password" placeholder="повторно пароль" name="password_2" id="reg_pass_2" value="">
+                                                    <span class="show-pass">Показать</span>
+                                                </div>
+                                            </div>
+                                            <div class="alert alert-danger" id="reg_errorBlock" style="display: none"></div>
+                                            <button class="register-btn hover-bs" type="button" id="reg_user">Регистрация</button>
+                                        </form>
+                                    </div>
+                                    <div class="rf-body-right" style="margin-top: 15px;">
+                                    <div class="signin-form">
+                                        <form action="" method="POST">
+                                            <div class="signin-inputs" style="margin-bottom: 15px;">
+                                                <div class="input-email">
+                                                    <input class="femail" type="text" placeholder="Email" name="email" id="email" value="">
+                                                </div>
+                                                <div class="input-password">
+                                                    <input class="fpass type_password" type="password" placeholder="Пароль" name="password" id="pass" value="">
+                                                    <span class="show-pass">Показать</span>
+                                                </div>
+                                            </div>
+                                            <div class="alert alert-danger" id="errorBlock_login" style="display: none"></div>
+                                            <button class="sign-in-btn hover-bs" type="button" id="auth_user" name="do_login" style="margin-top: 30px;">ВОЙТИ</button>
+                                        </form>
+                                    </div>
+
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-area hidden-sm hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="logo">
+                        <a href="{% url 'index_url' %}"><img src="{% static 'img/logo.png' %}" alt="" style="width: 40px;"></a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="menu">
+                        <nav>
+                            <ul>
+                                <li><a href="{% url 'index_url' %}">ГЛАВНАЯ</a></li>
+                                <li><a href="{% url 'treners_url' %}">ТРЕНЕРЫ</a></li>
+                                <li><a href="{% url 'prsonal_trening_url' %}">ОНЛАЙН ЗАНЯТИЯ</a></li>
+                                <li><a href="{% url 'videos_url' %}">ВИДЕОУРОКИ</a></li>
+                                <li><a href="{% url 'files_url' %}">ФАЙЛЫ</a></li>
+                                <li><a href="{% url 'articles_list_url' %}">НОВОСТИ</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="top-search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu-area visible-xs visible-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mobile_menu">
+                        <nav id="mobile_menu_active">
+                            <ul>
+                                <li><a href="{% url 'index_url' %}">ГЛАВНАЯ</a></li>
+                                <li><a href="{% url 'treners_url' %}">ТРЕНЕРЫ</a></li>
+                                <li><a href="{% url 'prsonal_trening_url' %}">ОНЛАЙН ЗАНЯТИЯ</a></li>
+                                <li><a href="{% url 'videos_url' %}">ВИДЕОУРОКИ</a></li>
+                                <li><a href="{% url 'files_url' %}">ФАЙЛЫ</a></li>
+                                <li><a href="{% url 'articles_list_url' %}">НОВОСТИ</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->

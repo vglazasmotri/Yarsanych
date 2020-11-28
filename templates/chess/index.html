@@ -1,0 +1,51 @@
+{% extends 'chess/base.html' %}
+{% load static %}
+{% block content %}
+        <!--three column section start-->
+<div class="container">
+    <div class="location">
+        <img src="{% static 'img/gmap.png' %}" alt="" class="gmap">
+  <!-- <div class="location-text">
+            <h1>Yarsanych.com</h1>
+            <p>Ша́хматы — настольная логическая игра со специальными фигурами на 64-клеточной доске для двух соперников, сочетающая в себе элементы искусства (в том числе в части шахматной композиции), науки и спорта.</p>
+        </div> -->
+    </div>
+</div>
+    <div class="three-clm-section" style="padding-top: 0px;">
+        <div class="container">
+            <div class="col-md-8 col-sm-12">
+                <div class="blog-post-details">
+                    <div class="post-details">
+                        <h1 class="blog-title">Шахматы</h1>
+                        <div class="social-link">
+                            <h1>Сейчас весь земной шар охватила шахматная лихорадка. Шахматная игра, незаслуженно ушедшая в тень в 90-е годы прошлого века, вновь обретает большую популярность по всему миру. Столь же стремительно и развивается рынок тренерских услуг, шахматной литературы и видеоуроков. Наша школа поможет Вам выбрать верный курс во всем многообразии шахматных знаний. Вас ждёт системное образование по всем аспектам мастерства, начиная от получения правильной информации по дебюту, миттельшпилю и эндшпилю и заканчивая упражнениями на развитие ценных спортивных качеств: трудолюбия, смелости и воли к победе. Удачи на чёрно-белых полях!</h1>
+                        </div>
+                        <img src="" alt="" class="blog-image">
+                        <p class="blog-desc" style=" text-align:justify; ">E-mail: contact@yarsanych.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="most-populer-second">
+                <h1 class="bdr-top-title">ПОЛЕЗНО</h1>
+                    {% for article in articles_list %}
+                    <!-- выводим статьи из БД -->
+                                <div class="populer-item">
+                                    <h2><a href="/blog-details.php/{{ article.slug }}">{{ article.title }}</a></h2>
+                                    <p class="p-t-cat">{{ article.intro_text }}</p>
+                                    <p><b>Автор статьи: </b>{{ article.title }}</p>
+                                </div>
+                    <!-- конец выводим статьи из БД -->
+                    {% endfor %}
+                    <div class="newsletter-section">
+                        <h1 class="bdr-top-title">Шахматы онлайн</h1>
+                        <p>Занятия с профессиональным тренером</p>
+                        <div class="banner-ad">
+                            <a href="personal-training.php"><img src="{% static 'img/banner/banner.jpg' %}" alt="button" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+
