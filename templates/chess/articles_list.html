@@ -12,36 +12,35 @@
     <div class="col-md-8 col-sm-12 col-xs-12">
         <div class="blog-post-details">
             <div class="about-me-sec">
-{% for article in articles_list %}
-                    <!-- Выводим статьи -->
-        <div class="container">
-            <div class="row">
-                <div class="latest-blog">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="blog-img">
-                            <div class="row">
-                                <img src="{{ article.img.url }}" alt="blog thumbnail" style="padding-right: 20px;">
+            {% for article in articles_list %}
+            <!-- Выводим статьи -->
+                <div class="container">
+                    <div class="row">
+                        <div class="latest-blog">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="blog-img">
+                                    <div class="row">
+                                        <img src="{{ article.img.url }}" alt="blog thumbnail" style="padding-right: 20px;">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <div class="blog-info">
-                            <div class="row">
-                                <div class="th-info-area">
-                                    <h1><a href="{% url 'article_url' slug=article.slug %}">{{ article.title }}</a></h1>
-                                    <p>{{ article.full_text }}</p>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="blog-info">
+                                    <div class="row">
+                                        <div class="th-info-area">
+                                            <h1><a href="{% url 'article_url' slug=article.slug %}">{{ article.title }}</a></h1>
+                                            <p>{{ article.full_text }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-{% endfor %}
+            {% endfor %}
                 </div>
             </div>
         </div>
-
     </div>
 {% include 'include/pagination.html' %}
 </div>

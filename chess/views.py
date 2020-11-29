@@ -30,20 +30,24 @@ class PrsonalTreningViews(View):
         return render(request, "chess/personal_trening.html", {"articles_list": articles})
 
 
-class VideosViews(View):
+class VideosViews(ListView):
     """Список видео"""
+    model = Videos
+    queryset = Videos.objects.order_by("-id")
+    paginate_by = 7
+    # def get(self, request):
+    #     videos = Videos.objects.all()
+    #     return render(request, "chess/videos_list.html", {"videos_list": videos})
 
-    def get(self, request):
-        videos = Videos.objects.all()
-        return render(request, "chess/videos.html", {"videos_list": videos})
 
-
-class FilesViews(View):
+class FilesViews(ListView):
     """Список файлов"""
-
-    def get(self, request):
-        files = Files.objects.all()
-        return render(request, "chess/files.html", {"files_list": files})
+    model = Files
+    queryset = Files.objects.order_by("-id")
+    paginate_by = 7
+    # def get(self, request):
+    #     files = Files.objects.all()
+    #     return render(request, "chess/files_list.html", {"files_list": files})
 
 
 class ArticlesViews(ListView):
