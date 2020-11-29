@@ -25,6 +25,40 @@ class Articles(models.Model):
         verbose_name_plural = "Статьи"
 
 
+class ArticleShots(models.Model):
+    """Фотографии к статье"""
+    title = models.CharField("Заголовок", max_length=100, blank=True)
+    description = models.TextField("Описание", blank=True)
+    image = models.ImageField("Изображение", upload_to="img/chess/")
+    article = models.ForeignKey(Articles, verbose_name="Статья", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Фотография к статье"
+        verbose_name_plural = "Фотографии к статье"
+
+
+class Reviews(models.Model):
+    """Отзывы"""
+    email = models.EmailField()
+    name = models.CharField("Имя", max_length=100)
+    text = models.TextField("Сообщение", max_length=5000)
+    parent = models.ForeignKey(
+        'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
+    )
+    article = models.ForeignKey(Articles, verbose_name="Статья", on_delete=models.CASCADE)
+    checked = models.BooleanField("Проверено", default=False)
+
+    def __str__(self):
+        return f"{self.name} - {self.article}"
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
+
+
 class Files(models.Model):
     """Файлы"""
     title = models.CharField("Название", max_length=1024)
@@ -71,25 +105,6 @@ class Treners(models.Model):
     class Meta:
         verbose_name = "Тренер"
         verbose_name_plural = "Тренеры"
-
-
-class Reviews(models.Model):
-    """Отзывы"""
-    email = models.EmailField()
-    name = models.CharField("Имя", max_length=100)
-    text = models.TextField("Сообщение", max_length=5000)
-    parent = models.ForeignKey(
-        'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
-    )
-    article = models.ForeignKey(Articles, verbose_name="Статья", on_delete=models.CASCADE)
-    checked = models.BooleanField("Проверено", default=False)
-
-    def __str__(self):
-        return f"{self.name} - {self.article}"
-
-    class Meta:
-        verbose_name = "Отзыв"
-        verbose_name_plural = "Отзывы"
 
 
 class Index(models.Model):
