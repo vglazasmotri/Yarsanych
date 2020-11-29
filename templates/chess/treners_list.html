@@ -1,0 +1,46 @@
+{% extends 'chess/base.html' %}
+{% block title %} Шахматные тренеры Yarsanych.com {% endblock %}
+{% block content %}
+<div class="mar-top-30" >
+        <div class="container">
+            <div class="col-xs-12">
+                <div class="expert-team-head">
+                    <p class="section-title-p"> </p>
+                    <h2 class="sectiont-title">Наши<span class="sectiont-title-bold"> тренеры</span></h2>
+                </div>
+            </div>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="blog-post-details">
+                <div class="about-me-sec">
+                {% for trener in treners_list %}
+                <!-- выводим тренеров из БД -->
+                <div class="container">
+                    <div class="row">
+                        <div class="mar-top-20">
+                            <div class="col-md-8 col-sm-9 col-xs-12">
+                                <div class="row">
+                                    <div class="about-left">
+                                        <h1>{{ trener.name }}</h1>
+                                        <p>{{ trener.description }}</p>
+                                        <p class="blog-desc" style=" text-align:justify; "></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-3 col-xs-12">
+                                <div class="row">
+                                    <div class="about-right mar-top-80">
+                                        <img src="{{ trener.img.url }}" alt="author image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'include/pagination.html' %}
+</div>
+{% endblock content %}

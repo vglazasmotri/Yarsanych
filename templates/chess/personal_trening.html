@@ -5,14 +5,15 @@
         <div class="container">
             <div class="col-md-8  col-sm-7 col-xs-12">
                 <div class="event-details">
-                                                <h1 class="event-title">Онлайн тренировки по Skype</h1>
-                    <p class="event-date">В современном шахматном мире занятия по Skype набирают всё большую популярность, ведь в некоторых городах нет хорошего тренера для вашего ребёнка, тогда на помощь приходят онлайн-занятия. Многие родители задаются вопросом о том, а как же занятия по интернету могут заменить живое общение? Для совсем начинающих шахматистов на мой взгляд никак, ведь ребёнка надо влюбить в шахматы и надо чтобы он постоянно трогал фигуры сам. Онлайн-занятия подходят лишь тем, кто уже хочет заниматься шахматами серьёзно и выступать на различных соревнованиях.</p>
+                    {% for article in articles_list %}
+                    <h1 class="event-title">{{ article.title }}</h1>
+                    <p class="event-date">{{ article.full_text }}</p>
                     <div class="event mar-top-30">
                         <img src="#" alt="" class="blog-image"><br>
                         <h3 class="evnt-desc"></h3>
-                        <p class="evnt-desc">E-mail: contact@miracleschool.ru<br>
-Skype: M1RacLe.13</p>
+                        <p class="evnt-desc">{{ article.contact_text }}</p>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-md-4 col-sm-5 col-xs-12">

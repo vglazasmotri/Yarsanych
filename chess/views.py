@@ -3,31 +3,30 @@ from django.views.generic.base import View
 from django.views.generic import DetailView, ListView
 
 from .forms import ReviewForm
-from .models import Articles, Treners, Videos, Files
+from .models import Articles, Treners, Videos, Files, Index, Trenings
 
 
 class IndexViews(View):
-    """Список статей"""
+    """Главная страница"""
 
     def get(self, request):
-        articles = Articles.objects.all()
-        return render(request, "chess/index.html", {"articles_list": articles})
-
-
-class TrenersViews(View):
-    """Список тренеров"""
-
-    def get(self, request):
-        treners = Treners.objects.all()
-        return render(request, "chess/treners.html", {"treners_list": treners})
+        article = Index.objects.all()
+        return render(request, "chess/index.html", {"articles_list": article})
 
 
 class PrsonalTreningViews(View):
-    """Список тренеров"""
+    """Персональные тренировки"""
 
     def get(self, request):
-        articles = Articles.objects.all()
-        return render(request, "chess/personal_trening.html", {"articles_list": articles})
+        article = Trenings.objects.all()
+        return render(request, "chess/personal_trening.html", {"articles_list": article})
+
+
+class TrenersViews(ListView):
+    """Список тренеров"""
+    model = Treners
+    queryset = Treners.objects.all()
+    paginate_by = 7
 
 
 class VideosViews(ListView):
@@ -35,9 +34,6 @@ class VideosViews(ListView):
     model = Videos
     queryset = Videos.objects.order_by("-id")
     paginate_by = 7
-    # def get(self, request):
-    #     videos = Videos.objects.all()
-    #     return render(request, "chess/videos_list.html", {"videos_list": videos})
 
 
 class FilesViews(ListView):
@@ -45,9 +41,6 @@ class FilesViews(ListView):
     model = Files
     queryset = Files.objects.order_by("-id")
     paginate_by = 7
-    # def get(self, request):
-    #     files = Files.objects.all()
-    #     return render(request, "chess/files_list.html", {"files_list": files})
 
 
 class ArticlesViews(ListView):
@@ -55,6 +48,7 @@ class ArticlesViews(ListView):
     model = Articles
     queryset = Articles.objects.order_by("-id")
     paginate_by = 7
+
 
 class ArticleViews(DetailView):
     """Одна статья"""

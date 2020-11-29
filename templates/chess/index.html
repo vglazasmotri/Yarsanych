@@ -16,12 +16,14 @@
             <div class="col-md-8 col-sm-12">
                 <div class="blog-post-details">
                     <div class="post-details">
-                        <h1 class="blog-title">Шахматы</h1>
+                        {% for article in articles_list %}
+                        <h1 class="blog-title">{{ article.title }}</h1>
                         <div class="social-link">
-                            <h1>Сейчас весь земной шар охватила шахматная лихорадка. Шахматная игра, незаслуженно ушедшая в тень в 90-е годы прошлого века, вновь обретает большую популярность по всему миру. Столь же стремительно и развивается рынок тренерских услуг, шахматной литературы и видеоуроков. Наша школа поможет Вам выбрать верный курс во всем многообразии шахматных знаний. Вас ждёт системное образование по всем аспектам мастерства, начиная от получения правильной информации по дебюту, миттельшпилю и эндшпилю и заканчивая упражнениями на развитие ценных спортивных качеств: трудолюбия, смелости и воли к победе. Удачи на чёрно-белых полях!</h1>
+                            <h1>{{ article.full_text }}</h1>
                         </div>
                         <img src="" alt="" class="blog-image">
-                        <p class="blog-desc" style=" text-align:justify; ">E-mail: contact@yarsanych.com</p>
+                        <p class="blog-desc" style=" text-align:justify; ">{{ article.contact_text }}</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

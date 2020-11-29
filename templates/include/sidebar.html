@@ -1,24 +1,24 @@
 {% load static %}
 {% load article_tag %}
-            <div class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
-                <div class="most-populer-second">
-                <h1 class="bdr-top-title">ПОЛЕЗНО</h1>
-                {% get_articles as articles_list %}
-                    {% for article in articles_list %}
-                    <!-- выводим статьи из БД -->
-                                <div class="populer-item">
-                                    <h2><a href="{% url 'article_url' slug=article.slug %}">{{ article.title }}</a></h2>
-                                    <p class="p-t-cat">{{ article.intro_text }}</p>
-                                    <p><b>Автор статьи: </b>{{ article.title }}</p>
-                                </div>
-                    <!-- конец выводим статьи из БД -->
-                    {% endfor %}
-                    <div class="newsletter-section">
-                        <h1 class="bdr-top-title">Шахматы онлайн</h1>
-                        <p>Занятия с профессиональным тренером</p>
-                        <div class="banner-ad">
-                            <a href="personal-training.php"><img src="{% static 'img/banner/banner.jpg' %}" alt="button" /></a>
-                        </div>
-                    </div>
-                </div>
+<div class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+    <div class="most-populer-second">
+    <h1 class="bdr-top-title">ПОЛЕЗНО</h1>
+    {% get_articles as articles_list %}
+        {% for article in articles_list %}
+        <!-- выводим статьи из БД -->
+        <div class="populer-item">
+            <h2><a href="{% url 'article_url' slug=article.slug %}">{{ article.title }}</a></h2>
+            <p class="p-t-cat">{{ article.intro_text }}</p>
+            <p><b>Автор статьи: </b>{{ article.title }}</p>
+        </div>
+        <!-- конец выводим статьи из БД -->
+        {% endfor %}
+        <div class="newsletter-section">
+            <h1 class="bdr-top-title">Шахматы онлайн</h1>
+            <p>Занятия с профессиональным тренером</p>
+            <div class="banner-ad">
+                <a href="{% url 'prsonal_trening_url' %}"><img src="{% static 'img/banner/banner.jpg' %}" alt="button" /></a>
             </div>
+        </div>
+    </div>
+</div>

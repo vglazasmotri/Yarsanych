@@ -6,4 +6,5 @@ admin.site.register(Treners)
 admin.site.register(Files)
 admin.site.register(Videos)
 admin.site.register(Reviews)
-
+admin.site.register(Index)
+admin.site.register(Trenings)

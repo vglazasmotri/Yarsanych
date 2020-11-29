@@ -59,18 +59,6 @@ class Videos(models.Model):
         verbose_name_plural = "Видео"
 
 
-# class Pokupateli(models.Model):
-#     """Покупатели"""
-#     name = models.CharField("Идентефикатор", max_length=1024)
-#     email = models.EmailField()
-#
-#     def __str__(self):
-#         return self.name
-#
-#     class Meta:
-#         verbose_name = "Покупатель"
-#         verbose_name_plural = "Покупатели"
-
 class Treners(models.Model):
     """Тренеры"""
     name = models.CharField("Имя", max_length=150)
@@ -102,3 +90,35 @@ class Reviews(models.Model):
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
+
+
+class Index(models.Model):
+    """Главная страница"""
+    title = models.CharField("Заголовок", max_length=150, db_index=True)
+    full_text = models.TextField("Текст", blank=True)
+    img = models.ImageField("Изображение", upload_to="img/chess/", blank=True)
+    contact_text = models.TextField("Текст с контактами", blank=True, db_index=True)
+    date_pub = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Главная страница"
+        verbose_name_plural = "Главная страница"
+
+
+class Trenings(models.Model):
+    """Страница персональные тренировки"""
+    title = models.CharField("Заголовок", max_length=150, db_index=True)
+    full_text = models.TextField("Текст", blank=True)
+    img = models.ImageField("Изображение", upload_to="img/chess/", blank=True)
+    contact_text = models.TextField("Текст с контактами", blank=True, db_index=True)
+    date_pub = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Страница персональные тренировки"
+        verbose_name_plural = "Страница персональные тренировки"
