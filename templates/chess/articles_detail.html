@@ -19,6 +19,7 @@
                         </div>
 
                         {% for review in articles.reviews_set.all %}
+                            {% if review.checked %}
                             <div class="sngl-comment-area">
                                 <div class="single-comment">
                                     <div class="user-img-cmnt"><img src="{% static 'img/user-image/person-icon.png' %}" alt="user_image" /></div>
@@ -31,6 +32,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
                         {% endfor %}
 
                     </div>
