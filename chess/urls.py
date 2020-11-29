@@ -11,6 +11,7 @@ urlpatterns = [
     path("file/", views.FilesViews.as_view(), name='files_url'),
     path("novosti/", views.ArticlesViews.as_view(), name='articles_list_url'),
     path("novosti/<str:slug>/", views.ArticleViews.as_view(), name='article_url'),
+    path("review/<int:pk>/", views.AddReview.as_view(), name="add_review"),
 ]
 
 

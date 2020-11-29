@@ -3838,7 +3838,7 @@ ul.ctg-list-area li > a i {
     margin-bottom: 15px;
 }
 
-.ext h3::before,
+.ext h3::before
 {
     content: '';
     height: 16px;

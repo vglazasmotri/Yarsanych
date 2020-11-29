@@ -1,31 +1,73 @@
 {% extends 'chess/base.html' %}
 {% block title %} {{ articles.title }} {% endblock %}
 {% load static %}
+{% include 'chess/articles_list.html' %}
 {% block content %}
         <!--three column section start-->
     <div class="three-clm-section mar-top-80" style="padding-top: 0px;">
         <div class="container">
             <div class="col-md-8 col-sm-12">
-        <div class="latest-blog">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="blog-img">
-                    <div class="row">
-                        <img src="{{ articles.img.url }}" alt="blog thumbnail" style="padding-right: 20px;">
-                    </div>
+                <div class="post-details">
+                    <h1 class="blog-title">{{ articles.title }}</h1>
+                    <p>{{ articles.full_text }}</p>
+                        <img src="{{ articles.img.url }}" alt="" class="blog-image">
+                    <p class="blog-desc"></p>
                 </div>
-            </div>
-            <div class="col-md-8 col-sm-8 col-xs-12">
-                <div class="blog-info">
-                    <div class="row">
-                        <div class="th-info-area">
-                            <h1><a href="#">{{ articles.title }}</a></h1>
-                            <p>{{ articles.full_text }}</p>
+                    <div class="comments-section">
+                        <div class="comments-count">
+                            <h5>Комментарии</h5>
                         </div>
+
+                        {% for review in articles.reviews_set.all %}
+                            <div class="sngl-comment-area">
+                                <div class="single-comment">
+                                    <div class="user-img-cmnt"><img src="{% static 'img/user-image/person-icon.png' %}" alt="user_image" /></div>
+                                    <div class="comment-detail">
+                                        <h1 class="user-name">{{ review.name }}
+                                            <span class="date"> </span>
+                                        </h1>
+                                        <p class="comment">{{ review.text }}</p>
+{#                                        <a  href="#"><button class="reply">Удалить</button></a>#}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                <div class="contact-form">
+                    <h1>Оставьте Ваш комментарий</h1>
+                    <div class="blog-leave-comment-area">
+                        <form action="{% url 'add_review' articles.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="blca-name blca-formgroup">
+                                        <input type="text" name="name" id="name" placeholder="Имя *">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="blca-email blca-formgroup">
+                                        <input type="text" name="email" id="email" placeholder="email адрес *">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="blca-comment blca-formgroup">
+                                        <textarea name="text" id="text" placeholder="Ваш комментарий *"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="blca-comment blca-formgroup">
+                                        <div class="alert alert-danger" id="add_comment_errorBlock" style="display: none"></div>
+                                        <p style="display: none" id="article_id">168</p>
+                                        <button  type="submit" class="hover-bs" id="add_comment">Отправить комментарий</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
             </div>
 {% include 'include/sidebar.html' %}
         </div>
+    </div>
 {% endblock content %}

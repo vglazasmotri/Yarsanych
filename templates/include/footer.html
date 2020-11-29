@@ -1,4 +1,5 @@
 {% load static %}
+{% load article_tag %}
 <!--subscribe section start-->
 <div class="subscribe-section">
 	<div class="container">
@@ -69,11 +70,12 @@
 				<div class="ft-info">
 					<h2>топ <span> статьи</span></h2>
 					<ul>
-						<li><a href="/blog-details.php?id=5"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Роль тренера</a></li>
-						<li><a href="/blog-details.php?id=7"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Литература</a></li>
-						<li><a href="/blog-details.php?id=4"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Обучение детей</a></li>
-						<li><a href="/blog-details.php?id=3"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Современные шахматы</a></li>
-						<li><a href="/blog-details.php?id=1"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Возникновение шахмат</a></li>
+                        <!-- выводим статьи в кол-ве шт -->
+                        {% get_articles count=4 as articles_list %}
+                        {% for article in articles_list %}
+                            <li><a href="{% url 'article_url' slug=article.slug %}"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>{{ article.title }}</a></li>
+                        {% endfor %}
+                        <!-- конец выводим статьи из БД -->
 					</ul>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Articles(models.Model):
@@ -15,6 +16,9 @@ class Articles(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("article_url", kwargs={"slug": self.slug})
 
     class Meta:
         verbose_name = "Статья"
@@ -81,3 +85,20 @@ class Treners(models.Model):
         verbose_name_plural = "Тренеры"
 
 
+class Reviews(models.Model):
+    """Отзывы"""
+    email = models.EmailField()
+    name = models.CharField("Имя", max_length=100)
+    text = models.TextField("Сообщение", max_length=5000)
+    parent = models.ForeignKey(
+        'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
+    )
+    article = models.ForeignKey(Articles, verbose_name="Статья", on_delete=models.CASCADE)
+    checked = models.BooleanField("Проверено", default=False)
+
+    def __str__(self):
+        return f"{self.name} - {self.article}"
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
