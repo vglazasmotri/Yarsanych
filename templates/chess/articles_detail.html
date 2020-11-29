@@ -9,9 +9,9 @@
             <div class="col-md-8 col-sm-12">
                 <div class="post-details">
                     <h1 class="blog-title">{{ articles.title }}</h1>
-                    <p>{{ articles.full_text }}</p>
+                    <p>{{ articles.intro_text }}</p>
                         <img src="{{ articles.img.url }}" alt="" class="blog-image">
-                    <p class="blog-desc"></p>
+                    <p class="blog-desc">{{ articles.full_text|safe }}</p>
                 </div>
                     <div class="comments-section">
                         <div class="comments-count">
