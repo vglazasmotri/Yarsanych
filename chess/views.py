@@ -50,7 +50,7 @@ class ArticlesViews(ListView):
     """Список статей"""
     model = Articles
     queryset = Articles.objects.order_by("-id")
-
+    paginate_by = 7
 
 class ArticleViews(DetailView):
     """Одна статья"""
