@@ -12,6 +12,12 @@
                     <p>{{ articles.intro_text }}</p>
                         <img src="{{ articles.img.url }}" alt="" class="blog-image">
                     <p class="blog-desc">{{ articles.full_text|safe }}</p>
+                    <p>
+                    {% for image in articles.articleshots_set.all %}
+                        <img src="{{ image.image.url }}" class="img-article-shots"
+                             alt="#">
+                    {% endfor %}
+                    </p>
                 </div>
                     <div class="comments-section">
                         <div class="comments-count">

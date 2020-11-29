@@ -7432,3 +7432,8 @@ ul.days li.nm {
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
 }
+
+.img-article-shots {
+  max-width: 350px;
+  height: auto;
+}
