@@ -5,8 +5,6 @@ from django.utils.safestring import mark_safe
 from .models import *
 
 
-
-
 class ArticlesAdminForm(forms.ModelForm):
     full_text = forms.CharField(label="Текст статьи", widget=CKEditorUploadingWidget())
 
